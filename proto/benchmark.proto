@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package benchmark;
+
+service BenchmarkService {
+  rpc Process (BenchmarkRequest) returns (BenchmarkResponse);
+}
+
+message BenchmarkRequest {
+  string payload_size = 1;
+  bytes data = 2;
+  int64 client_timestamp = 3;
+}
+
+message BenchmarkResponse {
+  bytes data = 1;
+  string checksum = 2;
+  int64 server_timestamp = 3;
+  string payload_size = 4;
+}
